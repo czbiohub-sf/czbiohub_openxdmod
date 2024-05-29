@@ -28,6 +28,10 @@
       - perl-Image-ExifTool
       - php-mbstring
       - php-pecl-apcu
+      - ca-certificates
+      - munge
+      - gnupg
+      - sudo
       - libgcrypt-devel
       - man2html
       - man2html-core

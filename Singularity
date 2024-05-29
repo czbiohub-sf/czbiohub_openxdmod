@@ -2,8 +2,14 @@ Bootstrap: docker
 From: rockylinux:8.9
 
 %labels
+        Author _RC_
+        Version v0.0.5
 
 
+%files
+        entrypoint.bash /entrypoint.bash
+        cryosparc.sh    /cryosparc.sh
+        cryosparc-server.sh     /app/cryosparc_master/bin/cryosparc-server.sh
 
 %post
 export LC_ALL=C
@@ -59,7 +65,7 @@ then
 fi
 
 %runscript
-
+echo /dev/null 
 
 
 
