@@ -9,9 +9,8 @@ From: rockylinux:8.9
 
 %files
         site.yml /opt/_xdmod_staging_dir/site.yml
-        cryosparc.sh    /cryosparc.sh
-        cryosparc-server.sh     /app/cryosparc_master/bin/cryosparc-server.sh
-
+        roles/xdmod_packages/tasks/main.yml    /opt/_xdmod_staging_dir/roles/xdmod_packages/tasks/main.yml
+        
 %post
 export LC_ALL=C
 export MY_BASE_DIRS=/opt/_xdmod_staging_dir
