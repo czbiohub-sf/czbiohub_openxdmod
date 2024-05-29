@@ -1,0 +1,37 @@
+- name: Install rpm packages for Open Xdmod
+  ansible.builtin.package:
+    name:
+      - mariadb-server
+      - mariadb-devel
+      - httpd
+      - mod_ssl
+      - nodejs:16
+      - php-devel
+      - tmux
+      - vim
+      - nano
+      - rsync
+      - wget 
+      - curl
+      - libreoffice
+      - php
+      - php-mysql
+      - php-cli
+      - php-gd
+      - php-pdo
+      - php-xml
+      - cronie
+      - logrotate
+      - jq
+      - chromium-headless
+      - librsvg2-tools
+      - perl-Image-ExifTool
+      - php-mbstring
+      - php-pecl-apcu
+      - libgcrypt-devel
+      - man2html
+      - man2html-core
+      - lua-devel
+      - http-parser-devel
+    state: latest
+  when: ansible_os_family == "RedHat"
