@@ -12,7 +12,7 @@ From: rockylinux:8.9
         roles/xdmod_packages/tasks/main.yml    /opt/_xdmod_staging_dir/roles/xdmod_packages/tasks/main.yml
         
 %post
-export LC_ALL=C
+export LC_ALL=C.UTF-8
 export MY_BASE_DIRS=/opt/_xdmod_staging_dir
 #
 mkdir -p ${MY_BASE_DIRS}
@@ -20,10 +20,15 @@ mkdir -p ${MY_BASE_DIRS}
 
 ######## install base packages for ansible deployment 
 # Note. Theres a ton of packages here to make sure we have somewhat of a sink for when patrons use this container in OOD
-dnf install -y epel-release ansible ansible-core
+dnf install -y epel-release 
+
+dnf -y install ansible ansible-core ansible-collection-community-general ansible-collection-community-mysql
 
 # we have to make sure we reset this nodejs stuff here
 dnf module -y reset nodejs
+
+## set the local 
+#/usr/bin/localectl set-locale LANG=en_US.UTF-8
 
 ################
 # deploy the playbook
@@ -41,6 +46,10 @@ echo "extension=mongodb.so" > /etc/php.d/40-mongodb.ini
 ################
 # Debug everything here 
 php -i | grep mongo
+
+%environment
+
+export LC_ALL=C.UTF-8
 
 PREFERRED_CACHE_DIR=${SPID_USER_MYDATA_CACHE_DIR}
 
