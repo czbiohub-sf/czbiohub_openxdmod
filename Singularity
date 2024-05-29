@@ -7,19 +7,34 @@ From: rockylinux:8.9
 
 %post
 export LC_ALL=C
+export MY_BASE_DIRS=/opt/_xdmod_staging_dir
+mkdir -p ${MY_BASE_DIRS}
 
+
+######## install base packages for ansible deployment 
 # Note. Theres a ton of packages here to make sure we have somewhat of a sink for when patrons use this container in OOD
 dnf install -y epel-release ansible ansible-core
 
 # we have to make sure we reset this nodejs stuff here
 dnf module -y reset nodejs
+
+################
 # deploy the playbook
 
-# ansible-playbook -i "localhost," -c local /opt/ood/ood-ansible/roles/ood_portal/files/ood_portal.yml
+
+ansible-playbook --connection=local --inventory 127.0.0.1 ${MY_BASE_DIRS}/site.yml
+
+# php configuations 
+
+pecl install mongodb
+echo "extension=mongodb.so" > /etc/php.d/40-mongodb.ini
 
 ##
 ## enable apache mods here 
 ## 
+
+# Debug everything here 
+php -i | grep mongo
 
 PREFERRED_CACHE_DIR=${SPID_USER_MYDATA_CACHE_DIR}
 
