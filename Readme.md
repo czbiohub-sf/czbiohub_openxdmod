@@ -1,4 +1,4 @@
-# Bruno XDmod Project
+# CZ-Biohub Network XDmod Project
 This project is to establish Open-XDmod for accounting on the Bruno HPC cluster
 
 
