@@ -9,7 +9,7 @@ From: rockylinux:8.9
 
 %files
         site.yml /opt/_xdmod_staging_dir/site.yml
-        roles/xdmod_packages/tasks/main.yml    /opt/_xdmod_staging_dir/roles/xdmod_packages/tasks/main.yml
+        roles/*    /opt/_xdmod_staging_dir/roles
         
 %post
 export LC_ALL=C.UTF-8
@@ -26,7 +26,7 @@ pushd ${MY_BASE_DIRS}
 dnf install -y epel-release 
 #dnf config-manager --enable crb
 
-dnf -y install ansible ansible-core ansible-collection-community-general ansible-collection-community-mysql
+dnf -y install ansible ansible-core ansible-collection-community-general ansible-collection-community-mysql tar gzip
 
 # we have to make sure we reset this nodejs stuff here
 dnf module -y reset nodejs
