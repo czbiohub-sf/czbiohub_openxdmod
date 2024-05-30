@@ -22,4 +22,4 @@ We need to have OpenXDmod available not only for our shareholder in San Francisc
 ## Errata 
 * Requested by Rosio. Try to get done soonish.
 * Will be helpful: https://httpd.apache.org/docs/2.4/en/howto/reverse_proxy.html
-* 
+* added to czbiohub-sf github repository
