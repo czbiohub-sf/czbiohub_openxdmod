@@ -17,6 +17,11 @@ export MY_BASE_DIRS=/opt/_xdmod_staging_dir
 #
 mkdir -p ${MY_BASE_DIRS}
 
+#change the directories
+
+pushd ${MY_BASE_DIRS}
+
+wget https://github.com/ubccr/xdmod/releases/download/v10.5.0-1.0/xdmod-10.5.0-1.0.el8.noarch.rpm
 
 ######## install base packages for ansible deployment 
 # Note. Theres a ton of packages here to make sure we have somewhat of a sink for when patrons use this container in OOD
