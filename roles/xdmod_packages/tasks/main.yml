@@ -15,7 +15,7 @@
       - curl
       - libreoffice
       - php
-      - php-mysql
+      - php-mysqlnd
       - php-cli
       - php-gd
       - php-pdo

@@ -21,11 +21,10 @@ mkdir -p ${MY_BASE_DIRS}
 
 pushd ${MY_BASE_DIRS}
 
-wget https://github.com/ubccr/xdmod/releases/download/v10.5.0-1.0/xdmod-10.5.0-1.0.el8.noarch.rpm
-
 ######## install base packages for ansible deployment 
 # Note. Theres a ton of packages here to make sure we have somewhat of a sink for when patrons use this container in OOD
 dnf install -y epel-release 
+#dnf config-manager --enable crb
 
 dnf -y install ansible ansible-core ansible-collection-community-general ansible-collection-community-mysql
 
@@ -35,9 +34,14 @@ dnf module -y reset nodejs
 ## set the local 
 #/usr/bin/localectl set-locale LANG=en_US.UTF-8
 
+
 ################
 # deploy the playbook
 ansible-playbook --connection=local --inventory 127.0.0.1 ${MY_BASE_DIRS}/site.yml
+
+###############
+# Grab the XDmoD noarch rpm
+wget https://github.com/ubccr/xdmod/releases/download/v10.5.0-1.0/xdmod-10.5.0-1.0.el8.noarch.rpm
 
 ################
 # php configuations 
