@@ -42,7 +42,7 @@ dnf -y install --skip-broken --nobest python3-pip ansible ansible-collection-com
 #pip3 install ansible
 
 # we have to make sure we reset this nodejs stuff here
-dnf module -y reset nodejs
+#dnf module -y reset nodejs
 
 ## set the local 
 #/usr/bin/localectl set-locale LANG=en_US.UTF-8
@@ -56,7 +56,7 @@ ansible-playbook --connection=local --inventory 127.0.0.1 ${MY_BASE_DIRS}/site.y
 # Grab the XDmoD noarch rpm
 wget https://github.com/ubccr/xdmod/releases/download/v10.5.0-1.0/xdmod-10.5.0-1.0.el8.noarch.rpm
 
-rpm -if xdmod-10.5.0-1.0.el8.noarch.rpm
+dnf install -y ./xdmod-10.5.0-1.0.el8.noarch.rpm
 ################
 # php configuations 
 #pecl install mongodb

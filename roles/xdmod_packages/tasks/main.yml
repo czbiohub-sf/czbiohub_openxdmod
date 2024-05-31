@@ -5,7 +5,6 @@
       - mariadb-devel
       - httpd
       - mod_ssl
- #     - nodejs:16
       - php-devel
       - tmux
       - vim
@@ -15,7 +14,7 @@
       - php-zip
       - php-posix
       - php-json
-#      - curl
+      - curl
       - libreoffice
       - php
       - php-mysqlnd
@@ -42,3 +41,8 @@
       - http-parser-devel
     state: latest
   when: ansible_os_family == "RedHat"
+
+- name: Install NodeJS 16 via dnf modules
+  ansible.builtin.dnf:
+    name: '@nodejs:16'
+    state: present
