@@ -4,4 +4,3 @@
   - localhost 
   roles:
   - { role: xdmod_packages }
-  - { role: xdmod_repositories }

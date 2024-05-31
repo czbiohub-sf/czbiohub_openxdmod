@@ -5,14 +5,17 @@
       - mariadb-devel
       - httpd
       - mod_ssl
-      - nodejs:16
+ #     - nodejs:16
       - php-devel
       - tmux
       - vim
       - nano
       - rsync
       - wget 
-      - curl
+      - php-zip
+      - php-posix
+      - php-json
+#      - curl
       - libreoffice
       - php
       - php-mysqlnd
