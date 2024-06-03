@@ -4,16 +4,16 @@ This project is to establish Open-XDmod for accounting on the Bruno HPC cluster
 
 ## Requirements
 
-* Zaphod as a host
-* Apptainer service
-* Deployed using config management
+* ~~Zaphod as a host~~
+* ~~Apptainer service~~
+* ~~Deployed using config management~~
 * Database utilizing VAST, or other clustered file systems in mount
-* Rockylinux or Centos 7 as the operating system
+* ~~Rockylinux or Centos 7 as the operating system~~
 * Deployed as a tab in Bruno OOD for everyone to view
 * tested on old ondemand server first, before depoyment on main ondemand server
 * Slurm needs to be bind mounted into the environment
-* Packages need to be deployed and resolved properly.
-* needs to be hosted on the biohubs main github page 
+* ~~Packages need to be deployed and resolved properly.~~
+* ~~needs to be hosted on the biohubs main github page~~ 
 * protect page through a reverse proxy of the web application
 
 ## Abstract 
