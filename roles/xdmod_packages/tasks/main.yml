@@ -83,3 +83,9 @@
     insertafter: '\[Date\]'
     line: 'date.timezone = America/Los_Angeles'
     state: present
+
+- name: Remove the mariadb gssapi package 
+  ansible.builtin.package:
+    name: 
+      - mariadb-gssapi-server
+    state: absent

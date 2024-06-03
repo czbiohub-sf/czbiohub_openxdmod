@@ -74,14 +74,44 @@ dnf install -y ./xdmod-10.5.0-1.0.el8.noarch.rpm
 ## enable apache mods here 
 ## 
 
+
+# mariadb stuff right here 
+chmod -R +wrx /var/log
+chown -R mysql:mysql /var/log/mariadb
+chmod -R +wrx /var/lib
+chown -R mysql:mysql /var/lib/mysql
+chmod -R +wrx /run
+chown -R mysql:mysql /run/mariadb
+
+mkdir -p /hpc
+
+# remove this package 
+dnf -y remove mariadb-gssapi-server
+
+
+# create the mysql database
+mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+
 ################
-# Debug everything here 
-#php -i | grep mongo
+# Copy configuration file to apache location
+#cp /usr/share/xdmod/templates/apache.conf /etc/httpd/conf.d/xdmod.conf
+
 
 %environment
-
 export LC_ALL=C.UTF-8
 
 
 %runscript
 echo /dev/null 
+
+#cd '/usr' ; /usr/bin/mysqld_safe --datadir='/var/lib/mysql'
+#/usr/sbin/httpd -DFOREGROUND 
+
+
+TZ=UTC sacct --clusters *cluster* --allusers \
+    --parsable2 --noheader --allocations --duplicates \
+    --format jobid,jobidraw,cluster,partition,qos,account,group,gid,user,uid,\
+submit,eligible,start,end,elapsed,exitcode,state,nnodes,ncpus,reqcpus,reqmem,\
+reqtres,alloctres,timelimit,nodelist,jobname \
+    --starttime 2013-01-01T00:00:00 --endtime 2013-01-01T23:59:59 \
+    >/tmp/slurm.log
