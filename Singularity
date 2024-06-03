@@ -13,7 +13,7 @@ From: rockylinux:8
 
 %files
         payload.tar /opt/_xdmod_staging_dir/payload.tar
-        
+        CZBioHub-Mirrors.repo /etc/yum.repos.d/CZBioHub-Mirrors.repo
 %post
 export LC_ALL=C.UTF-8
 export MY_BASE_DIRS=/opt/_xdmod_staging_dir
@@ -27,10 +27,16 @@ pushd ${MY_BASE_DIRS}
 ######## install base packages for ansible deployment 
 # Note. Theres a ton of packages here to make sure we have somewhat of a sink for when patrons use this container in OOD
 
-#enable powertools repo
-sed -i 's/enabled\=0/enabled\=1/g' /etc/yum.repos.d/Rocky-PowerTools.repo
-sed -i 's/enabled\=0/enabled\=1/g' /etc/yum.repos.d/Rocky-Plus.repo
 
+
+#delete all repos
+rm -rf /etc/yum.repos.d/*
+
+#enable powertools repo
+#sed -i 's/enabled\=0/enabled\=1/g' /etc/yum.repos.d/Rocky-PowerTools.repo
+#sed -i 's/enabled\=0/enabled\=1/g' /etc/yum.repos.d/Rocky-Plus.repo
+
+#this is left over crap from Rocky 9 testing
 #sed -i 's/enabled\=0/enabled\=1/g' /etc/yum.repos.d/rocky-addons.repo
 #sed -i 's/enabled\=0/enabled\=1/g' /etc/yum.repos.d/rocky-extras.repo
 #sed -i 's/enabled\=0/enabled\=1/g' /etc/yum.repos.d/rocky.repo

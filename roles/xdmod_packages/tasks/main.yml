@@ -55,6 +55,7 @@
       - man2html-core
       - lua-devel
       - http-parser-devel
+      - '@Development tools'
     state: latest
   when: ansible_os_family == "RedHat"
 
