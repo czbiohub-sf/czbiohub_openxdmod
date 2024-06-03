@@ -70,3 +70,9 @@
     insertafter: '\[server\]'
     line: 'sql_mode='
     state: present
+
+- name: Insert mongodb line in php.d file.
+  ansible.builtin.lineinfile:
+    path: /etc/php.d/40-mongodb.ini
+    line: 'extension=mongodb.so'
+    state: present

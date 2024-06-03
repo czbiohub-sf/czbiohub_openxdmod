@@ -60,7 +60,8 @@ ansible-playbook --connection=local --inventory 127.0.0.1 ${MY_BASE_DIRS}/site.y
 
 ###### 
 #PHP installation:
-echo "extension=mongodb.so" > /etc/php.d/40-mongodb.ini
+# lines are deprecated, and are now implemented in ansible playbook
+#echo "extension=mongodb.so" > /etc/php.d/40-mongodb.ini
 
 ###############
 # Grab the XDmoD noarch rpm
