@@ -29,8 +29,8 @@ pushd ${MY_BASE_DIRS}
 
 
 
-#delete all repos
-rm -rf /etc/yum.repos.d/*
+#delete all rocky repos
+rm -rf /etc/yum.repos.d/Rocky*
 
 #enable powertools repo
 #sed -i 's/enabled\=0/enabled\=1/g' /etc/yum.repos.d/Rocky-PowerTools.repo
