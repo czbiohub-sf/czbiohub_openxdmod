@@ -1,3 +1,7 @@
 payload.tar
 *.sif
 my_sandbox_dev_env/
+roles/test_case/
+test.txt
+test_yee.yml
+

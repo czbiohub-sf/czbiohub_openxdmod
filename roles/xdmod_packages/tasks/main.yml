@@ -59,12 +59,14 @@
     state: latest
   when: ansible_os_family == "RedHat"
 
-- name: Install NodeJS 16 via dnf modules
-  ansible.builtin.dnf:
-    name: '@nodejs:16'
-    state: present
-
 - name: Install mongodb pecl package
   community.general.pear:
     name: pecl/mongodb
+    state: present
+
+- name: Insert mariadb sql_mode empty parameter after server declaration line
+  ansible.builtin.lineinfile:
+    path: /etc/my.cnf.d/mariadb-server.cnf
+    insertafter: '\[server\]'
+    line: 'sql_mode='
     state: present
