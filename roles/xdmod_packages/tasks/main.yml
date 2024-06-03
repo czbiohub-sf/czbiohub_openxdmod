@@ -76,3 +76,9 @@
     path: /etc/php.d/40-mongodb.ini
     line: 'extension=mongodb.so'
     state: present
+
+- name: Place los angeles in the timezone php file
+  ansible.builtin.lineinfile:
+    path: /etc/php.ini
+    line: 'date.timezone = America/Los_Angeles'
+    state: present
