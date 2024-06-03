@@ -4,7 +4,7 @@
 [appstream]
 name=Rocky Linux $releasever - AppStream
 baseurl=http://frankie/mirrors-rocky8-x86_64-next/appstream
-gpgcheck=1
+gpgcheck=0
 enabled=1
 countme=1
 gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-rockyofficial
@@ -12,7 +12,7 @@ gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-rockyofficial
 [baseos]
 name=Rocky Linux $releasever - BaseOS
 baseurl=http://frankie/mirrors-rocky8-x86_64-next/baseos
-gpgcheck=1
+gpgcheck=0
 enabled=1
 countme=1
 gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-rockyofficial
@@ -20,7 +20,7 @@ gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-rockyofficial
 [devel]
 name=Rocky Linux $releasever - Devel WARNING! FOR BUILDROOT AND KOJI USE
 baseurl=http://frankie/mirrors-rocky8-x86_64-next/devel
-gpgcheck=1
+gpgcheck=0
 enabled=0
 countme=1
 gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-rockyofficial
@@ -28,7 +28,7 @@ gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-rockyofficial
 [extras]
 name=Rocky Linux $releasever - Extras
 baseurl=http://frankie/mirrors-rocky8-x86_64-next/extras
-gpgcheck=1
+gpgcheck=0
 enabled=1
 countme=1
 gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-rockyofficial
@@ -36,7 +36,7 @@ gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-rockyofficial
 [plus]
 name=Rocky Linux $releasever - Plus
 baseurl=http://frankie/mirrors-rocky8-x86_64-next/plus
-gpgcheck=1
+gpgcheck=0
 enabled=0
 countme=1
 gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-rockyofficial
@@ -44,7 +44,7 @@ gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-rockyofficial
 [powertools]
 name=Rocky Linux $releasever - PowerTools
 baseurl=http://frankie/mirrors-rocky8-x86_64-next/powertools
-gpgcheck=1
+gpgcheck=0
 enabled=1
 countme=1
 gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-rockyofficial
@@ -52,7 +52,7 @@ gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-rockyofficial
 [resilient-storage]
 name=Rocky Linux $releasever - ResilientStorage
 baseurl=http://frankie/mirrors-rocky8-x86_64-next/resilient-storage
-gpgcheck=1
+gpgcheck=0
 enabled=0
 countme=1
 gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-rockyofficial
@@ -60,7 +60,7 @@ gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-rockyofficial
 [rt]
 name=Rocky Linux $releasever - Realtime
 baseurl=http://frankie/mirrors-rocky8-x86_64-next/rt
-gpgcheck=1
+gpgcheck=0
 enabled=0
 countme=1
 gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-rockyofficial
@@ -79,7 +79,7 @@ gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-EPEL-8
 name=Extra Packages for Enterprise Linux Modular $releasever - $basearch
 baseurl=http://frankie/mirrors-rocky8-x86_64-next/epel-modular
 enabled=1
-gpgcheck=1
+gpgcheck=0
 countme=1
 gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-EPEL-8
 
@@ -87,7 +87,7 @@ gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-EPEL-8
 name=Extra Packages for Enterprise Linux $releasever - Testing - $basearch
 baseurl=http://frankie/mirrors-rocky8-x86_64-next/epel-testing
 enabled=0
-gpgcheck=1
+gpgcheck=0
 countme=1
 gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-EPEL-8
 
@@ -97,7 +97,7 @@ gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-EPEL-8
 name=RPM Fusion for EL 8 - Free - Updates
 baseurl=http://frankie/mirrors-rocky8-x86_64-next/rpmfusion-free-updates
 enabled=1
-gpgcheck=1
+gpgcheck=0
 countme=1
 gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-rpmfusion-free-el-8
 
@@ -155,14 +155,6 @@ enabled=1
 gpgcheck=0
 
 ################################################################################
-# DUO Mobile 2FA upstream repo mirror
-[duosecurity]
-name=Duo Security Repository
-baseurl=http://frankie/mirrors-rocky8-x86_64-next/duosecurity
-enabled=1
-gpgcheck=1
-
-################################################################################
 # Github CLI upstream repo mirror.
 [gh-cli]
 name=Github Client
@@ -171,58 +163,6 @@ enabled=1
 gpgcheck=1
 gpgkey=https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x23F3D4EA75716059
 
-################################################################################
-# Globus Connect Server upstream repo mirror.
-[Globus-Connect-Server-5-Stable]
-name=Globus Connect Server 5 Stable
-baseurl=http://frankie/mirrors-rocky8-x86_64-next/Globus-Connect-Server-5-Stable
-enabled=1
-gpgcheck=0
 
-################################################################################
-# Google Chrome upstream repo mirror.
-[google-chrome]
-name=google-chrome
-baseurl=http://frankie/mirrors-rocky8-x86_64-next/google-chrome
-enabled=1
-gpgcheck=1
-gpgkey=https://dl.google.com/linux/linux_signing_key.pub
-
-[google-cloud-sdk]
-name=google-cloud-sdk
-baseurl=http://frankie/mirrors-rocky8-x86_64-next/google-cloud-sdk
-enabled=1
-gpgcheck=1
-gpgkey=https://dl.google.com/linux/linux_signing_key.pub
-
-################################################################################
-# TurboVNC and VirtualGL upstream repo mirrors-rocky8-x86_64-next.
-[TurboVNC]
-name=TurboVNC official RPMs
-baseurl=http://frankie/mirrors-rocky8-x86_64-next/TurboVNC
-gpgcheck=1
-gpgkey=https://sourceforge.net/projects/turbovnc/files/VGL-GPG-KEY
-       https://sourceforge.net/projects/turbovnc/files/VGL-GPG-KEY-1024
-enabled=1
-exclude=turbovnc-*.*.9[0-9]-*
-
-[VirtualGL]
-name=VirtualGL official RPMs
-baseurl=http://frankie/mirrors-rocky8-x86_64-next/VirtualGL
-gpgcheck=1
-gpgkey=https://sourceforge.net/projects/virtualgl/files/VGL-GPG-KEY
-       https://sourceforge.net/projects/virtualgl/files/VGL-GPG-KEY-1024
-enabled=1
-exclude=VirtualGL-*.*.9[0-9]-*
-
-################################################################################
-# OpenZFS upstream repo mirrors-rocky8-x86_64-next.
-[zfs-kmod]
-name=ZFS on Linux for EL8 - kmod
-baseurl=http://frankie/mirrors-rocky8-x86_64-next/zfs-kmod
-enabled=1
-metadata_expire=7d
-gpgcheck=1
-gpgkey=http://frankie/rpm-gpg/RPM-GPG-KEY-zfsonlinux
 
 
