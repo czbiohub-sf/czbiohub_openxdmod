@@ -52,15 +52,16 @@ tar xvf payload.tar
 # deploy the playbook
 ansible-playbook --connection=local --inventory 127.0.0.1 ${MY_BASE_DIRS}/site.yml
 
+###### 
+#PHP installation:
+echo "extension=mongodb.so" > /etc/php.d/40-mongodb.ini
+
 ###############
 # Grab the XDmoD noarch rpm
 wget https://github.com/ubccr/xdmod/releases/download/v10.5.0-1.0/xdmod-10.5.0-1.0.el8.noarch.rpm
 
 dnf install -y ./xdmod-10.5.0-1.0.el8.noarch.rpm
 ################
-# php configuations 
-#pecl install mongodb
-#echo "extension=mongodb.so" > /etc/php.d/40-mongodb.ini
 
 ################
 ## enable apache mods here 
