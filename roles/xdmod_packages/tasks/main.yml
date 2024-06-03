@@ -1,6 +1,13 @@
-- name: Install php 7.4
+--- 
+
+- name: Change NodeJS to 16 via dnf modules
   ansible.builtin.dnf:
-    name: '@php:remi-7.4'
+    name: '@nodejs:16'
+    state: present
+
+- name: Change PHP to 7.4 via dnf modules
+  ansible.builtin.dnf:
+    name: '@php:7.4'
     state: present
 
 - name: Install rpm packages for Open Xdmod
