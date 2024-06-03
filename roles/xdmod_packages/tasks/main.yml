@@ -80,5 +80,6 @@
 - name: Place los angeles in the timezone php file
   ansible.builtin.lineinfile:
     path: /etc/php.ini
+    insertafter: '\[Date\]'
     line: 'date.timezone = America/Los_Angeles'
     state: present
