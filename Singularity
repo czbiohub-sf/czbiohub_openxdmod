@@ -83,7 +83,17 @@ chown -R mysql:mysql /var/lib/mysql
 chmod -R +wrx /run
 chown -R mysql:mysql /run/mariadb
 
+#make sure we have the hpc mount
 mkdir -p /hpc
+
+mkdir -p /var/lib/xdmod
+chown -R xdmod:xdmod /var/lib/xdmod
+
+mkdir -p /run/httpd
+chown -R apache:apache /run/httpd
+
+mkdir -p /run/php-fpm
+chown -R apache:apache /run/php-fpm
 
 # remove this package 
 dnf -y remove mariadb-gssapi-server
@@ -106,12 +116,9 @@ echo /dev/null
 
 #cd '/usr' ; /usr/bin/mysqld_safe --datadir='/var/lib/mysql'
 #/usr/sbin/httpd -DFOREGROUND 
+#/usr/sbin/php-fpm -R
+#/etc/xdmod/portal_settings.ini
+#/usr/sbin/httpd -k start
 
 
-TZ=UTC sacct --clusters *cluster* --allusers \
-    --parsable2 --noheader --allocations --duplicates \
-    --format jobid,jobidraw,cluster,partition,qos,account,group,gid,user,uid,\
-submit,eligible,start,end,elapsed,exitcode,state,nnodes,ncpus,reqcpus,reqmem,\
-reqtres,alloctres,timelimit,nodelist,jobname \
-    --starttime 2013-01-01T00:00:00 --endtime 2013-01-01T23:59:59 \
-    >/tmp/slurm.log
+
