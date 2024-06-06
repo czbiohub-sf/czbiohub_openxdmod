@@ -102,6 +102,8 @@ dnf -y remove mariadb-gssapi-server
 # create the mysql database
 mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
+mv  conf.d/ssl.conf /opt/_xdmod_staging_dir/ssl.conf_bak
+
 ################
 # Copy configuration file to apache location
 #cp /usr/share/xdmod/templates/apache.conf /etc/httpd/conf.d/xdmod.conf
@@ -121,4 +123,11 @@ echo /dev/null
 #/usr/sbin/httpd -k start
 
 
+#pushd /usr
+#/usr/sbin/php-fpm -R
+#/usr/sbin/httpd -k start
+#/usr/bin/mysqld_safe --datadir='/var/lib/mysql' &
+
+
+popd 
 
