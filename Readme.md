@@ -4,6 +4,7 @@ This project is to establish Open-XDmod for accounting on the Bruno HPC cluster
 
 ## Requirements
 
+* add an ansible inventory so that image can be deployed on bare metal servers.
 * automate ingestion process to check time created via `stat`, and the `diff` between files.
 * Database utilizing VAST, or other clustered file systems in mount
 * Deployed as a tab in Bruno OOD for everyone to view
