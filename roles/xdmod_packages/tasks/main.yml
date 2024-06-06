@@ -57,6 +57,9 @@
       - http-parser-devel
       - '@Development tools'
       - sendmail
+      - mod_auth_gssapi
+      - mod_md
+      - mod_ldap
     state: latest
   when: ansible_os_family == "RedHat"
 
