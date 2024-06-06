@@ -1,5 +1,6 @@
 --- 
 
+# make sure we use the dnf modules to switch to the correct version of nodejs and php
 - name: Change NodeJS to 16 via dnf modules
   ansible.builtin.dnf:
     name: '@nodejs:16'
@@ -10,6 +11,7 @@
     name: '@php:7.4'
     state: present
 
+# most of the packages we will need right here
 - name: Install rpm packages for Open Xdmod
   ansible.builtin.package:
     name:
@@ -63,6 +65,11 @@
     state: latest
   when: ansible_os_family == "RedHat"
 
+- name: Install the xdmod rpm from an url
+  ansible.builtin.dnf:
+    name: 'https://github.com/ubccr/xdmod/releases/download/v10.5.0-1.0/xdmod-10.5.0-1.0.el8.noarch.rpm'
+    state: present
+
 - name: Install mongodb pecl package
   community.general.pear:
     name: pecl/mongodb
@@ -88,8 +95,97 @@
     line: 'date.timezone = America/Los_Angeles'
     state: present
 
-- name: Remove the mariadb gssapi package 
+# make sure wee delete this package because it causes issues with the mariadb server
+- name: Remove the mariadb gssapi package.. causes issues for mariadb server
   ansible.builtin.package:
     name: 
       - mariadb-gssapi-server
     state: absent
+
+
+# set the proper directory/file permissions in container
+- name: wide open permissions for /var/log, in container
+  ansible.builtin.file:
+    path: /var/log
+    state: touch
+    mode: '0777'
+    recurse: yes
+    modification_time: preserve
+    access_time: preserve
+
+- name: wide open permissions for /var/lib in container
+  ansible.builtin.file:
+    path: /var/lib
+    state: touch
+    mode: '0777'
+    recurse: yes
+    modification_time: preserve
+    access_time: preserve
+
+- name: wide open permissions for /run in container
+  ansible.builtin.file:
+    path: /run
+    state: touch
+    mode: '0777'
+    recurse: yes
+    modification_time: preserve
+    access_time: preserve
+
+
+# now make some directories and set the owner and group here 
+- name: Set owner and group of /var/log/mariadb to mysql
+  ansible.builtin.file:
+    path: /var/log/mariadb
+    owner: mysql
+    group: mysql
+    state: directory
+    mode: '0775'
+
+- name: Set owner and group of /var/lib/mysql to mysql
+  ansible.builtin.file:
+    path: /var/lib/mysql
+    owner: mysql
+    group: mysql
+    state: directory
+    mode: '0775'
+
+- name: Set owner and group of /run/mariadb to mysql
+  ansible.builtin.file:
+    path: /run/mariadb
+    owner: mysql
+    group: mysql
+    state: directory
+    mode: '0775'
+
+# directory creation, maybe split off in another play
+- name: Make sure the hpc directory exists in container
+  ansible.builtin.file:
+    path: /hpc
+    state: directory
+    mode: '0775'
+
+- name: Make sure the xdmod directory exists in container
+  ansible.builtin.file:
+    path: /var/lib/xdmod
+    owner: xdmod
+    group: xdmod
+    state: directory
+    mode: '0775'
+
+- name: Make sure the /run/httpd directory exists in container
+  ansible.builtin.file:
+    path: /run/httpd
+    owner: apache
+    group: apache
+    state: directory
+    mode: '0775'
+
+- name: Make sure the /run/php-fpm directory exists in container
+  ansible.builtin.file:
+    path: /run/php-fpm
+    owner: apache
+    group: apache
+    state: directory
+    mode: '0775'
+
+# will have to reinstall the xdmod package here
