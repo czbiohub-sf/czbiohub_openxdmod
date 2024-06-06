@@ -65,9 +65,9 @@ ansible-playbook --connection=local --inventory 127.0.0.1 ${MY_BASE_DIRS}/site.y
 
 ###############
 # Grab the XDmoD noarch rpm
-wget https://github.com/ubccr/xdmod/releases/download/v10.5.0-1.0/xdmod-10.5.0-1.0.el8.noarch.rpm
+#wget https://github.com/ubccr/xdmod/releases/download/v10.5.0-1.0/xdmod-10.5.0-1.0.el8.noarch.rpm
 
-dnf install -y ./xdmod-10.5.0-1.0.el8.noarch.rpm
+#dnf install -y ./xdmod-10.5.0-1.0.el8.noarch.rpm
 ################
 
 ################
@@ -76,28 +76,24 @@ dnf install -y ./xdmod-10.5.0-1.0.el8.noarch.rpm
 
 
 # mariadb stuff right here 
-chmod -R +wrx /var/log
-chown -R mysql:mysql /var/log/mariadb
-chmod -R +wrx /var/lib
-chown -R mysql:mysql /var/lib/mysql
-chmod -R +wrx /run
-chown -R mysql:mysql /run/mariadb
+#chmod -R +wrx /var/log
+#chown -R mysql:mysql /var/log/mariadb
+#chmod -R +wrx /var/lib
+#chown -R mysql:mysql /var/lib/mysql
+#chmod -R +wrx /run
+#chown -R mysql:mysql /run/mariadb
 
 #make sure we have the hpc mount
-mkdir -p /hpc
-
-mkdir -p /var/lib/xdmod
-chown -R xdmod:xdmod /var/lib/xdmod
-
-mkdir -p /run/httpd
-chown -R apache:apache /run/httpd
-
-mkdir -p /run/php-fpm
-chown -R apache:apache /run/php-fpm
-
-# remove this package 
-dnf -y remove mariadb-gssapi-server
-
+#mkdir -p /hpc
+#
+#mkdir -p /var/lib/xdmod
+#chown -R xdmod:xdmod /var/lib/xdmod
+#
+#mkdir -p /run/httpd
+#chown -R apache:apache /run/httpd
+#
+#mkdir -p /run/php-fpm
+#chown -R apache:apache /run/php-fpm
 
 # create the mysql database
 mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
