@@ -29,7 +29,7 @@ pushd ${MY_BASE_DIRS}
 
 
 
-#delete all rocky repos
+#delete all rocky repos from the container 
 rm -rf /etc/yum.repos.d/Rocky*
 
 #enable powertools repo
