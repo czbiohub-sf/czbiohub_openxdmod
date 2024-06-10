@@ -14,15 +14,16 @@ MY_END_TIME=$(date +'%FT%T')
 # this will set the start time to 7 days ago in the format that xdmod likes
 MY_START_TIME=$(date +'%FT%T' -d "$(date +'%F') - 7 days")
 
+TZ=UTC
 
-
-TZ=UTC sacct --clusters bruno --allusers \
-    --parsable2 --noheader --allocations --duplicates \
-    --format jobid,jobidraw,cluster,partition,qos,account,group,gid,user,uid,\
+# grab the sacct data properly 
+sacct --clusters bruno --allusers \
+--parsable2 --noheader --allocations --duplicates \
+--format jobid,jobidraw,cluster,partition,qos,account,group,gid,user,uid,\
 submit,eligible,start,end,elapsed,exitcode,state,nnodes,ncpus,reqcpus,reqmem,\
 reqtres,alloctres,timelimit,nodelist,jobname \
-    --starttime 2020-01-01T00:00:00 --endtime 2024-06-02T23:59:59 \
-    > ./tmp_slurm.log
+--starttime ${MY_START_TIME} --endtime ${MY_END_TIME} \
+| zstd - > ./MY_SLURM_DATA_LOG_${MY_START_TIME}__${MY_END_TIME}.txt.zst
 
 # 
 # 
