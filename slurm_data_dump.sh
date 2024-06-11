@@ -17,7 +17,7 @@ MY_START_TIME=$(date +'%FT%T' -d "$(date +'%F') - 7 days")
 TZ=UTC
 
 # grab the sacct data properly 
-sacct --clusters bruno --allusers \
+sacct --clusters cluster --allusers \
 --parsable2 --noheader --allocations --duplicates \
 --format jobid,jobidraw,cluster,partition,qos,account,group,gid,user,uid,\
 submit,eligible,start,end,elapsed,exitcode,state,nnodes,ncpus,reqcpus,reqmem,\
