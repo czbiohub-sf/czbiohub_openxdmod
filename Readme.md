@@ -6,11 +6,12 @@ This project is to establish Open-XDmod for accounting on the Bruno HPC cluster
 
 * add an ansible inventory so that image can be deployed on bare metal servers.
 * automate ingestion process to check time created via `stat`, and the `diff` between files.
-* Database utilizing VAST, or other clustered file systems in mount
-* Deployed as a tab in Bruno OOD for everyone to view
-* tested on old ondemand server first, before depoyment on main ondemand server
-* Slurm needs to be bind mounted into the environment
-* protect page through a reverse proxy of the web application
+* Database utilizing VAST, or other clustered file systems in mount.
+* Deployed as a tab in Bruno OOD for everyone to view.
+* tested on old ondemand server first, before depoyment on main ondemand server.
+* protect page through a reverse proxy of the web application.
+* Changed to batch ingestion and shredding within the container.
+* ~~Slurm needs to be bind mounted into the environment~~ 
 * ~~Zaphod as a host~~
 * ~~Apptainer service~~
 * ~~Deployed using config management~~
