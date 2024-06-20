@@ -16,14 +16,16 @@ From: rockylinux:8
         CZBioHub-Mirrors.repo /etc/yum.repos.d/CZBioHub-Mirrors.repo
 %post
 export LC_ALL=C.UTF-8
-export MY_BASE_DIRS=/opt/_xdmod_staging_dir
+export MY_BASE_DIRS=/opt/czbh_xdmod_dir
 export CZ_IN_DIR=${MY_BASE_DIRS}/in_dir
 export CZ_OUT_DIR=${MY_BASE_DIRS}/out_dir
+export CZ_ERR_DIR=${MY_BASE_DIRS}/error_dir
 
 # make the directories for base and input/output
 mkdir -p ${MY_BASE_DIRS}
 mkdir -p ${CZ_IN_DIR}
 mkdir -p ${CZ_OUT_DIR}
+mkdir -p ${CZ_ERR_DIR}
 
 #change the directories
 
