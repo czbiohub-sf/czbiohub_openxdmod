@@ -14,7 +14,7 @@ MY_END_TIME=$(date +'%FT%T')
 # this will set the start time to 7 days ago in the format that xdmod likes
 MY_START_TIME=$(date +'%FT%T' -d "$(date +'%F') - 7 days")
 
-TZ=UTC
+export TZ=UTC
 
 # grab the sacct data properly 
 sacct --clusters cluster --allusers \
