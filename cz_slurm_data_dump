@@ -1,0 +1,48 @@
+#!/bin/bash 
+
+
+# This script will grab everything in a 24 hours span. Current time, to the previous day.
+
+set -x 
+
+# set the umask 
+umask 022
+
+# show us the current date 
+date 
+
+# Make sure we get the end time first
+MY_END_TIME=$(date +'%FT%T')
+
+# this will set the start time to 7 days ago in the format that xdmod likes
+MY_START_TIME=$(date +'%FT%T' -d "$(date +'%F') - 1 days")
+
+MY_SERVER="login-02" 
+
+MY_WORK_DIR="/home/randall.white/czbiohub_openxdmod"
+
+# push the directory on top of the stack and lets get to work 
+pushd ${MY_WORK_DIR}
+
+export TZ=UTC
+
+# grab the sacct data properly 
+ssh ${MY_SERVER} "export TZ=UTC ; sacct --clusters cluster --allusers \
+--parsable2 --noheader --allocations --duplicates \
+--format jobid,jobidraw,cluster,partition,qos,account,group,gid,user,uid,\
+submit,eligible,start,end,elapsed,exitcode,state,nnodes,ncpus,reqcpus,reqmem,\
+reqtres,alloctres,timelimit,nodelist,jobname \
+--starttime ${MY_START_TIME} --endtime ${MY_END_TIME} \
+| zstd -" > ./MY_SLURM_DATA_LOG_${MY_START_TIME}__${MY_END_TIME}.txt.zst
+
+#
+#
+#
+#
+#
+
+# pop off of the stack 
+popd 
+
+
+exit 0
